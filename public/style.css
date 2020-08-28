@@ -1,0 +1,48 @@
+.slider_image {
+    width: 50px;
+    height: 20px;
+}
+
+.logo {
+    width: 90px;
+    height: 40px;
+}
+
+body {
+    background: #2a2727 !important;
+}
+
+.card {
+    background: #2a2727 !important;
+}
+
+label {
+    color: #fff
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+}
+
+.order-call-form {
+    position: absolute;
+    display: none;
+    z-index: 2;
+    top: 60px;
+    right: 20px;
+}
+
+#order-is-sent {
+    z-index: 15;
+    position: absolute;
+    visibility: hidden;
+    height: 50px;
+    top: -70px;
+    transition: 0.2s;
+}
+
+#order-is-sent.down {
+    visibility: visible;
+    top: 70px;
+}

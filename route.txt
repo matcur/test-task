@@ -1,0 +1,21 @@
++--------+-----------+------------------+------------------+---------------------------------------------------------------------+------------+
+| Domain | Method    | URI              | Name             | Action                                                              | Middleware |
++--------+-----------+------------------+------------------+---------------------------------------------------------------------+------------+
+|        | GET|HEAD  | api/user         |                  | Closure                                                             | api        |
+|        |           |                  |                  |                                                                     | auth:api   |
+|        | GET|HEAD  | login            | login            | App\Http\Controllers\Auth\LoginController@showLoginForm             | web        |
+|        |           |                  |                  |                                                                     | guest      |
+|        | POST      | login            |                  | App\Http\Controllers\Auth\LoginController@login                     | web        |
+|        |           |                  |                  |                                                                     | guest      |
+|        | POST      | logout           | logout           | App\Http\Controllers\Auth\LoginController@logout                    | web        |
+|        | GET|HEAD  | password/confirm | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm | web        |
+|        |           |                  |                  |                                                                     | auth       |
+|        | POST      | password/confirm |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm         | web        |
+|        |           |                  |                  |                                                                     | auth       |
+|        | GET|HEAD  | {}               | show             | App\Http\Controllers\HomePageController@show                        | web        |
+|        |           |                  |                  |                                                                     | auth       |
+|        | PUT|PATCH | {}               | update           | App\Http\Controllers\HomePageController@update                      | web        |
+|        |           |                  |                  |                                                                     | auth       |
+|        | GET|HEAD  | {}/edit          | edit             | App\Http\Controllers\HomePageController@edit                        | web        |
+|        |           |                  |                  |                                                                     | auth       |
++--------+-----------+------------------+------------------+---------------------------------------------------------------------+------------+
