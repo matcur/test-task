@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\Page;
+use App\Models\PageProperty;
 use Illuminate\Http\Request;
 
 class PageRepository extends AbstractRepository
@@ -22,27 +23,43 @@ class PageRepository extends AbstractRepository
 
     public function update(Request $request, Page $page)
     {
-        $pageProperties = $page->pageProperties;
-        $requestProperties = $request->input();
+        $requestProperties = $request->except(['_token', '_method']);
 
-        $this->updateInput($requestProperties, $pageProperties);
-        $this->updateFiles($requestProperties, $pageProperties);
+        $this->removeProperties($page);
+
+        $this->updateInput($requestProperties, $page);
     }
 
-    public function updateInput($requestProperties, $pageProperties)
+    public function removeProperties(Page $page)
     {
-        foreach($requestProperties as $key => $value) {
-            $pageProperties->map(function ($property) use ($key, $value) {
-                if ($property->name == $key) {
-                    $property->value = $value;
-                    $property->save();
+        $page->pageProperties->map(function(PageProperty $property) {
+            $property->delete();
+        });
+    }
+
+    public function updateInput($requestProperties, Page $page)
+    {
+        foreach ($requestProperties as $key => $value) {
+            if (is_array($value)) {
+                $values = [];
+                foreach ($value as $item) {
+                    $values[] = [
+                        'name' => $key,
+                        'value' => $item,
+                        'type' => $key,
+                    ];
                 }
-            });
+
+                $page->pageProperties()
+                     ->createMany($values);
+                continue;
+            }
+
+            $page->pageProperties()
+                 ->create([
+                     'name' => $key,
+                     'value' => $value,
+                 ]);
         }
-    }
-
-    public function updateFiles($requestProperties, $pageProperties)
-    {
-
     }
 }

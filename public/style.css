@@ -8,23 +8,6 @@
     height: 40px;
 }
 
-body {
-    background: #2a2727 !important;
-}
-
-.card {
-    background: #2a2727 !important;
-}
-
-label {
-    color: #fff
-}
-
-footer {
-    position: relative;
-    bottom: 0;
-}
-
 .order-call-form {
     position: absolute;
     display: none;

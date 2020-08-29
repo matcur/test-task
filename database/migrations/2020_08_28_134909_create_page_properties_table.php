@@ -17,9 +17,8 @@ class CreatePagePropertiesTable extends Migration
             $table->id();
             $table->string('page_name');
             $table->string('name');
-            $table->string('value');
-            $table->string('input_type')->default('text');
-            $table->boolean('doHasMany')->default(false);
+            $table->string('value')->nullable();
+            $table->string('type')->default('text');
             $table->timestamps();
         });
     }

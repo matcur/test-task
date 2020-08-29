@@ -19,6 +19,11 @@ class Page extends Model
         return $this->hasMany(PageProperty::class, 'page_name', 'name');
     }
 
+    public function sliderImages()
+    {
+        return $this->pageProperties()->where('type', 'slider_image');
+    }
+
     public function hasPageProperty($key)
     {
         return (bool) $this->pageProperties()->get()->filter(function (PageProperty $property) use ($key) {

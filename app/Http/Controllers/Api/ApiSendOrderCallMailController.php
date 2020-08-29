@@ -24,8 +24,6 @@ class ApiSendOrderCallMailController extends Controller
         $homePage = $this->pageRepository
                          ->find('home');
 
-        Log::info($request['user_name']);
-        Log::info($request['user_phone']);
         Mail::to($homePage->email)
             ->send(new OrderCallMail($request['user_name'],$request['user_phone']));
 

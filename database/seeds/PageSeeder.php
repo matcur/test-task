@@ -19,26 +19,24 @@ class PageSeeder extends Seeder
                      'value' => 'This is the title',
                  ],[
                      'name' => 'logo_path',
-                     'value' => 'fuck.png',
+                     'value' => 'qwer.jpg',
                  ],[
                      'name' => 'slider_image',
-                     'value' => 'fuck1.png',
-                     'doHasMany' => true,
-                     'input_type' => 'image',
+                     'value' => 'qwer.jpg',
+                     'type' => 'slider_image',
                  ],[
                      'name' => 'slider_image',
-                     'value' => 'fuck2.png',
-                     'doHasMany' => true,
-                     'input_type' => 'image',
+                     'value' => 'qwer.jpg',
+                     'type' => 'slider_image',
                  ],[
                      'name' => 'main_content',
-                     'value' => 'This is the fucking main content',
+                     'value' => 'This is the main content',
                  ],[
                      'name' => 'footer_content',
-                     'value' => 'This is the fucking footer content',
+                     'value' => 'This is the footer content',
                  ],[
                      'name' => 'email',
-                     'value' => 'Fuck you',
+                     'value' => 'ru.far2014@yandex.ru',
                  ]]);
 
         $homePage->save();

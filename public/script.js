@@ -29,7 +29,7 @@ $('#order-call-btn').click((e) => {
 
             orderIsSent.show();
             orderIsSent.addClass('down');
-            setInterval(() => orderIsSent.removeClass('down'), 3000);
+            setInterval(() => orderIsSent.removeClass('down'), 8000);
         }
     });
 })

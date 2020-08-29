@@ -11,11 +11,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('pages.update', $page->name) }}" method="post">
+                    <form action="{{ route('pages.update', $page->name) }}" id="page-edit-form" method="post">
                         @csrf
                         @method('put')
+                        <div class="file-uploader">
+                            <file-upload :images="{{ json_encode($page->sliderImages->pluck('value')) }}"
+                                         app-url="{{ config('app.url') }}"/>
+                        </div>
                         @foreach($page->pageProperties as $property)
-                            @switch($property->input_type)
+                            @switch($property->type)
                                 @case('image')
                                     <label for="{{ $property->name }}">
                                         {{ ucfirst($property->name) }}
@@ -60,13 +64,14 @@
 
 @section('footer')
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js" defer></script>
     <script>
         $(document).ready(function() {
-
             $('.summernote-editor').each((index, el) => {
                 $(el).summernote();
             });
+
+            $('textarea#files').remove();
         });
 
         function sendFile(file, el) {

@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        {!! $page->title !!}
+                        <img-slider :images="{{ json_encode($page->sliderImages->pluck('value')) }}"
+                                    app-url="{{ config('app.url') }}"/>
                     </div>
                     <div class="row">
                         {!! $page->main_content !!}

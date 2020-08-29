@@ -10,7 +10,7 @@ class PageProperty extends Model
         'name',
         'page_name',
         'value',
-        'doHasMany',
+        'type',
     ];
 
     public function page()
