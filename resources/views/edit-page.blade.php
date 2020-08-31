@@ -8,6 +8,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-3">`
+            <div class="card card-body">
+                <plant-menu :plants="{{ json_encode($plants) }}"
+                            :can-remove="true"></plant-menu>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
@@ -16,40 +22,39 @@
                         @method('put')
                         <div class="file-uploader">
                             <file-upload :images="{{ json_encode($page->sliderImages->pluck('value')) }}"
-                                         app-url="{{ config('app.url') }}"/>
+                                         input-class-name="slider_image[]"/>
                         </div>
                         @foreach($page->pageProperties as $property)
                             @switch($property->type)
                                 @case('image')
-                                    <label for="{{ $property->name }}">
-                                        {{ ucfirst($property->name) }}
-                                    </label>
-                                    <input type="hidden" value="{{ $property->value }}">
-                                    <input type="{{ $property->input_type }}"
-                                           class="input-group {{ $property->name }}"
-                                           id="{{ $property->name }}"
-                                           name="{{ $property->name }}"
-                                           src="{{ asset($property->value) }}">
+                                    <div class="form-group">
+                                        <file-upload :images="{{ json_encode([$property->value]) }}"
+                                                     input-class-name="{{ $property->name }}"/>
+                                    </div>
                                 @break
                                 @case('text')
-                                    <label for="{{ $property->name }}">
-                                        {{ ucfirst($property->name) }}
-                                    </label>
-                                    <textarea
-                                        class="input-group summernote-editor"
-                                        id="{{ $property->name }}"
-                                        name="{{ $property->name }}">
-                                    {{ $property->value }}
-                                    </textarea>
+                                    <div class="form-group">
+                                        <label for="{{ $property->name }}">
+                                            {{ ucfirst($property->name) }}
+                                        </label>
+                                        <textarea
+                                            class="input-group summernote-editor"
+                                            id="{{ $property->name }}"
+                                            name="{{ $property->name }}">
+                                        {{ $property->value }}
+                                        </textarea>
+                                    </div>
                                 @break
                                 @case('email')
-                                    <label for="{{ $property->name }}">
-                                        {{ ucfirst($property->name) }}
-                                    </label>
-                                    <input type="email"
-                                           id="{{ $property->name }}"
-                                           value="{{ $property->value }}"
-                                           name="{{ $property->name }}">
+                                    <div class="form-group">
+                                        <label for="{{ $property->name }}">
+                                            {{ ucfirst($property->name) }}
+                                        </label>
+                                        <input type="email"
+                                               id="{{ $property->name }}"
+                                               value="{{ $property->value }}"
+                                               name="{{ $property->name }}">
+                                    </div>
                                 @break
                             @endswitch
                         @endforeach

@@ -29,3 +29,8 @@
     visibility: visible;
     top: 70px;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+}

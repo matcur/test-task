@@ -3,7 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <plant-search :plants="{{ json_encode($plants) }}"/>
+            </div>
+        </div>
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
                     <div class="row justify-content-center">

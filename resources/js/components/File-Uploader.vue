@@ -25,7 +25,7 @@
         components: {
             vueDropzone: vue2Dropzone
         },
-        props: ['images', 'app-url'],
+        props: ['images', 'input-class-name'],
         data() {
             return {
                 dropzoneOptions: {
@@ -33,25 +33,27 @@
                     thumbnailWidth: 150,
                     thumbnailHeight: 150,
                     addRemoveLinks: true,
+                    destroyDropzone: false,
                 },
             };
         },
         methods: {
             uploadSuccess(file, response) {
-                console.log('File Successfully Uploaded with file name: ' + response.file);
                 let fileName = response.file;
                 this.createFileInput(fileName);
             },
-            uploadError(file, message) {
-                console.log('An Error Occurred');
+            uploadError(file, message) {},
+            fileRemoved(file, error, xhr) {
+                let fileInput = document.querySelector('input[value=\"' + file.name + '\"]');
+                fileInput.parentNode.removeChild(fileInput);
+
             },
-            fileRemoved() {},
             createFileInput(fileName) {
                 let form = document.getElementById('page-edit-form');
                 let fileInput = document.createElement('input');
 
                 fileInput.type = 'text';
-                fileInput.name = 'slider_image[]';
+                fileInput.name = this.inputClassName;
                 fileInput.setAttribute('value', fileName);
                 fileInput.style.display = 'none';
 
@@ -59,9 +61,10 @@
             }
         },
         mounted() {
-            var file = { size: 123, name: "Icon", type: "image/png" };
             this.images.map((image) => {
-                let imageUrl = this.appUrl + image;
+                let imageUrl = domainUrl + image;
+                let file = { size: 123, name: image, type: "image/png" };
+
                 this.createFileInput(image);
                 this.$refs.myVueDropzone.manuallyAddFile(file, imageUrl);
             })

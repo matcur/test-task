@@ -18,6 +18,10 @@ window.Vue = require('vue');
 
 import FileUploader from "./components/File-Uploader";
 import ImgSlider from "./components/Img-Slider"
+import PlantSearch from  "./components/plant/Plant-Search";
+import PlantList from "./components/plant/Plant-List";
+import PlantMenu from './components/plant/Plant-Menu';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -29,5 +33,8 @@ const app = new Vue({
     components: {
         'file-upload': FileUploader,
         'img-slider': ImgSlider,
+        'plant-search': PlantSearch,
+        'plant-list': PlantList,
+        'plant-menu': PlantMenu,
     }
 });

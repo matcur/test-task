@@ -19,24 +19,25 @@ class PageSeeder extends Seeder
                      'value' => 'This is the title',
                  ],[
                      'name' => 'logo_path',
-                     'value' => 'qwer.jpg',
+                     'value' => 'files/weweewe.jpg',
+                     'type' => 'image'
                  ],[
                      'name' => 'slider_image',
-                     'value' => 'qwer.jpg',
+                     'value' => 'files/12312312.jpg',
                      'type' => 'slider_image',
                  ],[
                      'name' => 'slider_image',
-                     'value' => 'qwer.jpg',
+                     'value' => 'files/Xr9oC8yTb3Nh7FcY9icPYfv51nrhWvobEyfNSpSo.jpeg',
                      'type' => 'slider_image',
                  ],[
                      'name' => 'main_content',
-                     'value' => 'This is the main content',
+                     'value' => 'Основной контент',
                  ],[
                      'name' => 'footer_content',
-                     'value' => 'This is the footer content',
+                     'value' => 'Контент подвала',
                  ],[
                      'name' => 'email',
-                     'value' => 'ru.far2014@yandex.ru',
+                     'value' => 'admin.admin@gmail.com',
                  ]]);
 
         $homePage->save();

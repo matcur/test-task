@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use App\Models\Plant;
 use App\Repositories\PageRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -61,7 +62,9 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        return view($page->name, compact('page'));
+        $plants = Plant::all();
+
+        return view($page->name, compact('page', 'plants'));
     }
 
     /**
@@ -72,7 +75,9 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        return view('edit-page', compact('page'));
+        $plants = Plant::all();
+
+        return view('edit-page', compact('page', 'plants'));
     }
 
     /**

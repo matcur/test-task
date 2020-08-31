@@ -21,4 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'Api'], function() {
     Route::post('send_order_call_mail', 'ApiSendOrderCallMailController');
     Route::post('file/load', 'ApiLoadFileController');
+    Route::post('/add_new_plant', 'ApiCreatePlantController');
+    Route::post('/destroy_plant', 'ApiDestroyPlantController');
 });

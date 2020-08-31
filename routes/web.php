@@ -22,3 +22,4 @@ Auth::routes([
 Route::resource('/pages', 'PageController')
      ->only(['show', 'edit', 'update'])
      ->names('pages');
+

@@ -40,6 +40,8 @@ class PageRepository extends AbstractRepository
     public function updateInput($requestProperties, Page $page)
     {
         foreach ($requestProperties as $key => $value) {
+            //Если $value это массив, то его нужно сохранить
+            //
             if (is_array($value)) {
                 $values = [];
                 foreach ($value as $item) {
