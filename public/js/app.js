@@ -2205,7 +2205,7 @@ __webpack_require__.r(__webpack_exports__);
 
         var upperItem = item.name.toUpperCase();
 
-        if (upperItem.indexOf(upperSearchPlantName) === 0 || upperSearchPlantName === '') {
+        if (upperItem.indexOf(upperSearchPlantName) != -1 || upperSearchPlantName === '') {
           _this.searchedPlants.push(item);
         }
       });

@@ -34,7 +34,7 @@
                     let upperSearchPlantName = this.searchPlantName.toUpperCase()
                     let upperItem = item.name.toUpperCase();
 
-                    if (upperItem.indexOf(upperSearchPlantName) === 0
+                    if (upperItem.indexOf(upperSearchPlantName) != -1
                         || upperSearchPlantName === '') {
                         this.searchedPlants.push(item);
                     }
